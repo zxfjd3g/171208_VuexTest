@@ -1,6 +1,7 @@
 <template>
   <div>
-    <p>clicked: {{$store.state.count}} times, count is {{oddOrEven}}</p>
+    <p>click {{count}} times, count is {{evenOrOdd}}</p>
+
     <button @click="increment">+</button>
     <button @click="decrement">-</button>
     <button @click="incrementIfOdd">increment if odd</button>
@@ -9,14 +10,28 @@
 </template>
 
 <script>
+  import {mapState, mapGetters, mapActions} from 'vuex'
+
   export default {
-    computed: {
-      oddOrEven () {
-        return this.$store.getters.oddOrEven
-      }
+
+    mounted () {
+      console.log(this.$store)
     },
 
-    methods: {
+    /*computed: {
+      count () {
+        return this.$store.state.count
+      },
+      evenOrOdd () {
+        return this.$store.getters.evenOrOdd
+      }
+    },*/
+    computed: {
+      ...mapState(['count']),
+      ...mapGetters(['evenOrOdd'])
+    },
+
+    /*methods: {
       increment () {
         this.$store.dispatch('increment')
       },
@@ -29,6 +44,9 @@
       incrementAsync () {
         this.$store.dispatch('incrementAsync')
       }
+    }*/
+    methods: {
+      ...mapActions(['increment', 'decrement', 'incrementIfOdd', 'incrementAsync'])
     }
   }
 </script>
