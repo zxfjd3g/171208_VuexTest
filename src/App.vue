@@ -1,36 +1,22 @@
 <template>
-  <div class="todo-container">
-    <div class="todo-wrap">
-      <TodoHeader/>
-      <TodoList/>
-      <TodoFooter/>
-    </div>
+  <div class="container">
+    <Search/>
+    <UsersMain/>
   </div>
 </template>
 
 <script>
-  import TodoHeader from './components/TodoHeader.vue'
-  import TodoList from './components/TodoList.vue'
-  import TodoFooter from './components/TodoFooter.vue'
+  import Search from './components/Search.vue'
+  import Main from './components/Main.vue'
 
   export default {
-
     components: {
-      TodoHeader,
-      TodoList,
-      TodoFooter
+      Search,
+      UsersMain: Main
     }
   }
 </script>
 
 <style>
-  .todo-container {
-    width: 600px;
-    margin: 0 auto;
-  }
-  .todo-container .todo-wrap {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
+
 </style>
