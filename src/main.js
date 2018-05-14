@@ -1,16 +1,23 @@
-/*
-入口JS
- */
 import Vue from 'vue'
-import App from './App.vue'
-import store from './vuex/store'
+import store from './store'
+import app from './components/app.vue'
+import {currency} from './currency'
+
+Vue.filter('currency', currency)
 
 
-// 创建vm
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
-  components: {App}, // 映射组件标签
-  template: '<App/>', // 指定需要渲染到页面的模板
-  store
+  components: {
+    app,
+  },
+  template: '<app/>',
+  store,
+})
+
+new Vue({
+  el: '#app',
+  store,
+  // render: createElement => createElement(app)   // 返回<app/>
+  render: h => h(app)
 })
